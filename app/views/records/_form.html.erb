@@ -1,0 +1,41 @@
+<%= form_for(@record) do |f| %>
+  <% if @record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h2>
+
+      <ul>
+      <% @record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :National_id %><br>
+    <%= f.number_field :patient_id %>
+  </div>
+  <div class="field">
+    <%= f.label :treatment_center_id %><br>
+    <%= f.collection_select :treatment_center_id, TreatmentCenter.all , :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :Rdate %><br>
+    <%= f.date_select :Rdate %>
+  </div>
+  <div class="field">
+    <%= f.label :diagnoses %><br>
+    <%= f.text_area :diagnoses %>
+  </div>
+  <div class="field">
+    <%= f.label :diagnoses_type %><br>
+    <%= f.number_field :diagnoses_type %>
+  </div>
+  <div>
+    <%= f.label :medicines%>
+    <%= select_tag("medicine_ids[]", options_for_select(Medicine.all.collect { |med| [med.name, med.id] }, @record.medicines.collect { |med| med.id}), {:multiple=>true, :size=>6})%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

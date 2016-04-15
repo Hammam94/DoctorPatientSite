@@ -1,0 +1,34 @@
+<%= form_for(@x_ray) do |f| %>
+  <% if @x_ray.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@x_ray.errors.count, "error") %> prohibited this x_ray from being saved:</h2>
+
+      <ul>
+      <% @x_ray.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rays_name %><br>
+    <%= f.text_area :rays_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :RecordId %><br>
+    <%= f.text_field :record_id , required: true, value: params[:record_id] %>
+  </div>
+  <div class="field">
+    <%= f.label :results %><br>
+    <%= f.text_area :results %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br>
+    <%= f.text_area :comments %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

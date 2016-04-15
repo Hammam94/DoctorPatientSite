@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  syndicate_id: 
+  address: MyText
+  specialization_id: 
+  likes: 
+  dislikes: 
+
+two:
+  name: MyText
+  syndicate_id: 
+  address: MyText
+  specialization_id: 
+  likes: 
+  dislikes: 

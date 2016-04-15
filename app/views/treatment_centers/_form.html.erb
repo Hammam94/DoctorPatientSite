@@ -1,0 +1,33 @@
+<%= form_for(@treatment_center) do |f| %>
+  <% if @treatment_center.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@treatment_center.errors.count, "error") %> prohibited this treatment_center from being saved:</h2>
+
+      <ul>
+      <% @treatment_center.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :syndicate_id %><br>
+    <%= f.collection_select :syndicate_id, Syndicate.all , :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :specialization_id %><br>
+    <%= f.collection_select :specialization_id, Specialization.all , :id, :name, include_blank: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

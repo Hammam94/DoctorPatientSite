@@ -1,0 +1,44 @@
+
+var ready;
+ready = function() {
+	$(".search").click(function(){
+		$value_string = $(".value").val();
+		if ($value_string == "") { 
+	        $(".result").remove();
+	        creatediv();
+	        var row = "<p class = \"result\"> please write the national id of your patient</p>";
+	        $(row).appendTo(".results");
+	    }else{
+			$.ajax({
+				dataType: "json",
+	            url:"../getpatient/"+$(".value").val(),        
+	            error: function(XMLHttpRequest, errorTextStatus, error){
+	                alert("Failed to submit : "+ erorTextStatus+" ;"+error);
+	            },
+	            success: function(data) {
+	            	$(".result").remove();
+
+	            	if (data === null) {
+	            		row = "<p class = \"result\">there is no patients with this id please create a file for that patent </p>";   
+			            $(row).appendTo(".results");
+			            row = "<a class = \"result btn btn-success \" style= 'font: bold 11px Arial; text-decoration: none;background-color: #EEEEEE;color: #333333;padding: 2px 6px 2px 6px;border-top: 1px solid #CCCCCC;border-right: 1px solid #333333;border-bottom: 1px solid #333333;border-left: 1px solid #CCCCCC;' href = 'patients/new'> add new patient </a>";
+	            		$(row).appendTo(".results");
+	            	}else{
+			            row = "<a href=\"../patients/" + data.id + "\" class = \"result btn btn-success\">" + data.name + "</a>";   
+			            $(row).appendTo(".results"); 
+		            }                    
+	            }
+			})
+		}
+	});
+};
+
+function creatediv() {
+	var div = document.createElement("div");
+	div.className = "results";
+
+	document.body.appendChild(div);
+}
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

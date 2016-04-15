@@ -1,0 +1,13 @@
+<h2> Welcome <%= @user.username%> </h2> 
+<h4> Email : <%= @user.email%> </h4>
+<hr>
+<div style ="width:75%">
+<h3>Patients :</h3>
+<% (@user.patients).each do |patient| %>
+   <%= link_to patient.name , patient_path(patient.id)%>
+<% end %>
+</div>
+
+	
+</div>
+</div>

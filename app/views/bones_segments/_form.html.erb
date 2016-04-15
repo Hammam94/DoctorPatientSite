@@ -1,0 +1,29 @@
+<%= form_for(@bones_segment) do |f| %>
+  <% if @bones_segment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bones_segment.errors.count, "error") %> prohibited this bones_segment from being saved:</h2>
+
+      <ul>
+      <% @bones_segment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_area :name %>
+  </div>
+  <div class="field">
+    <%= f.label :company_id %><br>
+    <%= f.collection_select :company_id, Company.all , :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

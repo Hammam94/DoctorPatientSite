@@ -1,0 +1,29 @@
+<table class ="table table-striped">
+	<% if @surgerys.any? %>
+		<tr>
+            <td>Name</td>
+            <td>description</td>
+            <td>Date</td>
+            <td>place</td>
+            <td>Doctor</td>
+            <td>show surgery</td>
+        </tr>
+		<% @surgerys.each do |surgery| %>
+	      <tr>
+	        <td><%= Patient.find(surgery.patient_id).name %></td>
+	        <td><%= surgery.description %></td>
+	        <td><%= surgery.S_date %></td>
+	        
+	        <td><%= surgery.place %></td>
+	        <td><%= User.find(surgery.user_id).username %></td>
+	        <td><%= link_to 'Show', surgery ,:class =>"btn btn-info" %></td>
+	      </tr>
+		<% end %>
+
+		<tr><td><%= link_to 'add surgery', new_surgery_path, :class => "btn btn-default" %> </td></tr>
+
+	<% else %>
+		<p>there are no surgerys for that patient</p>
+		<%= link_to 'add surgery', new_surgery_path, :class => "btn btn-default"%>
+	<% end %>
+</table>

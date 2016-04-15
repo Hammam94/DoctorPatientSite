@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Octagon</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'font-awesome.min', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'index', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'jquery-1.10.2.min', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<% if user_signed_in? %>
+	
+	<nav class="navbar navbar-default" role="navigation" style = "position : relative">
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <ul class="nav navbar-nav">
+	            <li class="active"><%= link_to current_user.username, root_path %></li>
+	            <li> <%= link_to 'midical companies' , companies_path%></li>
+	            <li> <%= link_to 'sign out', '/users/sign_out', :method => :delete%></li>
+	        </ul>
+	        <div class="col-sm-3 col-md-3 pull-right">
+                <div class="input-group">
+                    <input type="text" class="form-control value" placeholder="Search" >
+                    <div class="input-group-btn ">
+                        <button class="btn btn-default search" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+	        </div>        
+	    </div>
+	</nav>
+<% end %>
+
+<%= yield %>
+
+<% if user_signed_in? %>
+<hr>
+<div class = "results"></div>
+<% end %>
+
+
+</body>
+</html>

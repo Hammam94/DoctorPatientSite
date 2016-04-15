@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Bones Segments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Company</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bones_segments.each do |bones_segment| %>
+      <tr>
+        <td><%= bones_segment.name %></td>
+        <td><%= bones_segment.company_id %></td>
+        <td><%= bones_segment.description %></td>
+        <td><%= link_to 'Show', bones_segment %></td>
+        <td><%= link_to 'Edit', edit_bones_segment_path(bones_segment) %></td>
+        <td><%= link_to 'Destroy', bones_segment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bones segment', new_bones_segment_path %>

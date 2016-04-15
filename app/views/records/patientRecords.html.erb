@@ -1,0 +1,32 @@
+<table class="table table-striped table-boreded">
+    <% if @rcords.any? %>
+        <tr>
+            <td>Name</td>
+            <td>Treatment Center</td>
+            <td>Date</td>
+            <td>Diagnoses</td>
+            <td>Diagnoses Type</td>
+            <td>Doctor</td>
+            <td>show record</td>
+        </tr>
+
+        <% @rcords.each do |record| %>
+              <tr>
+                <td><%= Patient.find(record.patient_id).name %></td>
+                <td><%= TreatmentCenter.find(record.treatment_center_id).name %></td>
+                <td><%= record.Rdate %></td>
+                <td><%= record.diagnoses %></td>
+                <td><%= record.diagnoses_type %></td>
+                <td><%= User.find(record.user_id).username %></td>
+                <td><%= link_to 'Show', record , :class =>"btn btn-info"%> <td>
+              </tr>
+        <% end %>
+
+        <tr><td><%= link_to 'add record', new_record_path , :class => "btn btn-default" %></td></tr>
+
+    <% else %>
+        <p>there are no records for that patient</p>
+        <%= link_to 'add record', new_record_path, :class => "btn btn-default" %>
+    <% end %>
+
+</table>

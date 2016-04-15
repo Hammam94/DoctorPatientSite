@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @treatment_center.name %>
+</p>
+
+<p>
+  <strong>Syndicate:</strong>
+  <%= Syndicate.find(@treatment_center.syndicate_id).name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @treatment_center.address %>
+</p>
+
+<p>
+  <strong>Specialization:</strong>
+  <%= Specialization.find(@treatment_center.specialization_id).name %>
+</p>
+
+<p>
+  <strong>Likes:</strong>
+  <%= @treatment_center.likes %>
+</p>
+
+<p>
+  <strong>Dislikes:</strong>
+  <%= @treatment_center.dislikes %>
+</p>
+
+<%= link_to 'Edit', edit_treatment_center_path(@treatment_center) %> |
+<%= link_to 'Back', treatment_centers_path %>

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<% if current_user.patients.include?@patient %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @patient.name %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @patient.height %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @patient.weight %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @patient.address %>
+</p>
+
+<%= link_to 'Edit', edit_patient_path(@patient)  , :class => "btn btn-warning"%> |
+<%= link_to 'record', patient_records_path(@patient.id), :class => "btn btn-info"%> |
+<%= link_to 'surgeries' , patient_surgeries_path(@patient.id), :class => "btn btn-info" %>
+
+<% else %>
+<p>Sorry That patient is not your patient yet u must add him to see his informations</p>
+<%= link_to 'add patient', add_patient_path(@patient.id) %>
+<% end %>
+

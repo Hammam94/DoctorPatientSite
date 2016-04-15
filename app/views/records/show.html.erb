@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= Patient.find(@record.patient_id).name %>
+</p>
+
+<p>
+  <strong>Treatment center:</strong>
+  <%= TreatmentCenter.find(@record.treatment_center_id).name %>
+</p>
+
+<p>
+  <strong>Rdate:</strong>
+  <%= @record.Rdate %>
+</p>
+
+<p>
+  <strong>Diagnoses:</strong>
+  <%= @record.diagnoses %>
+</p>
+
+<p>
+  <strong>Diagnoses type:</strong>
+  <%= @record.diagnoses_type %>
+</p>
+<hr>
+<% if @record.x_rays.any? %>
+<h3>X_RAYS:</h3>
+  <% @record.x_rays.each do |x_ray| %>
+        <tr>
+          <td><%= x_ray.rays_name %></td>
+          <td><%= x_ray.results %></td>
+          <td><%= x_ray.comments %></td>
+          <td><%= link_to 'Show', x_ray , :class => 'btn btn-info'%></td>
+        </tr><br>
+  <% end %>
+
+  <%= link_to 'add x_ray', new_x_ray_path(@record.id), :class => "btn btn-default" %>
+
+<% else %>
+<h3>X_RAYS:</h3>
+  <p>there are no x_rays for that patient</p>
+  <%= link_to 'add x_ray', new_x_ray_path(@record.id), :class => "btn btn-default"  %> 
+<% end %><hr>
+
+<% if @record.medicines.any? %>
+<h3>Medicines:</h3>
+  <% @record.medicines.each do |medicine| %>
+        <tr>
+          <td><%= medicine.name %></td>
+          <td><%= medicine.material %></td>
+          <td><%= medicine.concentration %></td>
+          <td><%= MedicineCategroy.find(medicine.medicine_category_id).name %></td>
+          <td><%= Company.find(medicine.company_id).name %></td>
+          <td><%= link_to 'Show', medicine, :class => 'btn btn-info' %></td>
+        </tr><br>
+  <% end %>
+<% else %>
+<h3>Medicines:</h3>
+  <p>there are no medicines for that patient at that record</p>
+<% end %><hr>
+
+<% if @record.tests.any? %>
+<h3>Tests:</h3>
+  <% @record.tests.each do |test| %>
+        <tr>
+          <td><%= test.test_name %></td>
+          <td><%= test.results %></td>
+          <td><%= test.comments %></td>
+          <td><%= link_to 'Show', test, :class => 'btn btn-info' %></td>
+        </tr><br>
+  <% end %>
+  <%= link_to 'add test', new_test_path(@record.id), :class => "btn btn-default"  %>
+<% else %>
+<h3>Tests:</h3>
+  <p>there are no tests for that patient at that record</p>
+   <%= link_to 'add test', new_test_path(@record.id), :class => "btn btn-default"  %>
+<% end %>   

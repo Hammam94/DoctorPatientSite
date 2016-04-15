@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Treatment Centers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Syndicate</th>
+      <th>Address</th>
+      <th>Specialization</th>
+      <th>Likes</th>
+      <th>Dislikes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @treatment_centers.each do |treatment_center| %>
+      <tr>
+        <td><%= treatment_center.name %></td>
+        <td><%= Syndicate.find(treatment_center.syndicate_id).name %></td>
+        <td><%= treatment_center.address %></td>
+        <td><%= Specialization.find(treatment_center.specialization_id).name %></td>
+        <td><%= treatment_center.likes %></td>
+        <td><%= treatment_center.dislikes %></td>
+        <td><%= link_to 'Show', treatment_center %></td>
+        <td><%= link_to 'Edit', edit_treatment_center_path(treatment_center) %></td>
+        <td><%= link_to 'Destroy', treatment_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Treatment center', new_treatment_center_path %>

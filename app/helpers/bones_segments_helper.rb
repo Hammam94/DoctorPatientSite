@@ -1,0 +1,2 @@
+module BonesSegmentsHelper
+end

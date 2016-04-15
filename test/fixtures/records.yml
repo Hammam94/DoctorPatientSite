@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 1
+  treatment_center_id: 1
+  Rdate: 2016-02-16
+  diagnoses: MyText
+  diagnoses_type: 1
+
+two:
+  patient_id: 1
+  treatment_center_id: 1
+  Rdate: 2016-02-16
+  diagnoses: MyText
+  diagnoses_type: 1

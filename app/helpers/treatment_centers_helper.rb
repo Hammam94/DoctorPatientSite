@@ -1,0 +1,2 @@
+module TreatmentCentersHelper
+end

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  user_id: 1
+  patient_id: 1
+  S_date: 2016-02-17
+  place: MyText
+
+two:
+  description: MyText
+  user_id: 1
+  patient_id: 1
+  S_date: 2016-02-17
+  place: MyText

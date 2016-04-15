@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company Name:</strong>
+  <%= @company.name %>
+</p> <hr>
+
+<% if @company.medicines.any? %>
+  <h3>Meicines:</h3>
+  <% @company.medicines.each do |medicine| %>
+        <tr>
+          <td><%= medicine.name %></td>
+          <td><%= medicine.material %></td>
+          <td><%= medicine.concentration %></td>
+          <td><%= MedicineCategroy.find(medicine.medicine_category_id).name %></td>
+        </tr><br>
+  <% end %><hr>
+<% end %>
+
+<% if @company.bones_segments.any? %>
+  <h3>Bones_segments:</h3>
+  <% @company.bones_segments.each do |bones_segment| %>
+        <tr>
+          <td><%= bones_segment.name %></td>
+          <td><%= bones_segment.description %></td>
+        </tr><br>
+  <% end %>
+<% end %>
+
